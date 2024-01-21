@@ -6,6 +6,8 @@ console.log(numSecret);
 
 let correct = false;
 
+let intentos = 1; //Intentos del jugador
+
 while(correct == false) {
     
     try{
@@ -15,15 +17,22 @@ while(correct == false) {
 
         if(numUser == numSecret & !isNaN(numUser) && numUser != null && numUser != "") {
             //Se cumplio la condicion
-            alert(`Numero correcto!, el numero fue: ${numSecret}`);
+            alert(`Numero correcto!, el numero fue: ${numSecret}. Se utilizo una cantidad de ${intentos} intentos`);
             correct = true;
         }else if(numUser > 10 | numUser < 0){
             alert("Valor ingresado no es valido, intenta nuevamente");
             correct = false;
         }else{
-            //No se cumplio la condicion
-            alert("No acertaste el numero, intenta nuevamente");
+            if(numUser > numSecret){
+                //No se cumplio la condicion
+                alert("El numero introducido es muy alto, intenta nuevamente");
+            }else{
+                //No se cumplio la condicion
+                alert("El numero introducido es muy bajo, intenta nuevamente");
+            }
+            intentos++;
             correct = false;
+
         }
     
     }catch(error){
